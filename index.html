@@ -7,30 +7,48 @@
 
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
     <h1>HemoCheck</h1>
 
     <label>Gender:</label><br>
-    <input type="radio" name="gender" value="male"> Male
-    <input type="radio" name="gender" value="female"> Female
+
+    <input type="radio" name="gender" value="male">
+    Male
+
+    <input type="radio" name="gender" value="female">
+    Female
+
 
     <br><br>
+
 
     <label>Hemoglobin (Hb):</label><br>
     <input type="number" id="hb" step="0.1">
 
+
     <br><br>
+
 
     <label>MCV (fL):</label><br>
     <input type="number" id="mcv">
 
+
     <br><br>
 
-    <button>Analyze</button>
+
+    <button id="analyzeBtn">Analyze</button>
+
+    <button id="saveBtn">Save Patient</button>
+
 
     <h2>Result</h2>
-    <p id="result">Waiting for analysis...</p>
+
+    <p id="result">
+        Waiting for analysis...
+    </p>
+
 
     <script src="script.js"></script>
 
