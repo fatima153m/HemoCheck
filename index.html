@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HemoCheck</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
+
 
 <body>
 
@@ -21,8 +24,11 @@
 
         <h2>Patient Data</h2>
 
+
         <label>👤 Gender</label>
+
         <div class="gender">
+
             <label>
                 <input type="radio" name="gender" value="male">
                 Male
@@ -32,15 +38,28 @@
                 <input type="radio" name="gender" value="female">
                 Female
             </label>
+
         </div>
 
 
+
         <label>🩸 Hemoglobin (Hb)</label>
-        <input type="number" id="hb" step="0.1" placeholder="Enter Hb value">
+
+        <input 
+        type="number" 
+        id="hb" 
+        step="0.1"
+        placeholder="Enter Hb value">
+
 
 
         <label>🔬 MCV</label>
-        <input type="number" id="mcv" placeholder="Enter MCV value">
+
+        <input 
+        type="number" 
+        id="mcv"
+        placeholder="Enter MCV value">
+
 
 
         <button id="analyzeBtn">
@@ -52,7 +71,9 @@
             Save Patient
         </button>
 
+
     </div>
+
 
 
     <div class="result-card">
@@ -72,4 +93,5 @@
 <script src="script.js"></script>
 
 </body>
+
 </html>
