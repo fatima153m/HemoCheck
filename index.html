@@ -4,53 +4,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HemoCheck</title>
-
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <h1>HemoCheck</h1>
+<div class="app">
 
-    <label>Gender:</label><br>
-
-    <input type="radio" name="gender" value="male">
-    Male
-
-    <input type="radio" name="gender" value="female">
-    Female
+    <div class="header">
+        <h1>🩸 HemoCheck</h1>
+        <p>Smart Anemia Screening</p>
+    </div>
 
 
-    <br><br>
+    <div class="card">
+
+        <h2>Patient Data</h2>
+
+        <label>👤 Gender</label>
+        <div class="gender">
+            <label>
+                <input type="radio" name="gender" value="male">
+                Male
+            </label>
+
+            <label>
+                <input type="radio" name="gender" value="female">
+                Female
+            </label>
+        </div>
 
 
-    <label>Hemoglobin (Hb):</label><br>
-    <input type="number" id="hb" step="0.1">
+        <label>🩸 Hemoglobin (Hb)</label>
+        <input type="number" id="hb" step="0.1" placeholder="Enter Hb value">
 
 
-    <br><br>
+        <label>🔬 MCV</label>
+        <input type="number" id="mcv" placeholder="Enter MCV value">
 
 
-    <label>MCV (fL):</label><br>
-    <input type="number" id="mcv">
+        <button id="analyzeBtn">
+            Analyze →
+        </button>
 
 
-    <br><br>
+        <button id="saveBtn" class="save">
+            Save Patient
+        </button>
+
+    </div>
 
 
-    <button id="analyzeBtn">Analyze</button>
+    <div class="result-card">
 
-    <button id="saveBtn">Save Patient</button>
+        <h2>Result</h2>
+
+        <p id="result">
+            Waiting for analysis...
+        </p>
+
+    </div>
 
 
-    <h2>Result</h2>
-
-    <p id="result">
-        Waiting for analysis...
-    </p>
+</div>
 
 
-    <script src="script.js"></script>
+<script src="script.js"></script>
 
 </body>
 </html>
