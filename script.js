@@ -1,104 +1,228 @@
-body {
-    font-family: Arial, sans-serif;
-    background: #f1f7fc;
-    margin: 0;
-    padding: 20px;
+let currentResult = "";
+
+
+
+document.getElementById("analyzeBtn").addEventListener("click", function(){
+
+
+let hb = parseFloat(document.getElementById("hb").value);
+
+let mcv = parseFloat(document.getElementById("mcv").value);
+
+
+let gender = document.querySelector(
+'input[name="gender"]:checked'
+);
+
+
+
+if(!gender){
+
+document.getElementById("result").innerHTML =
+"Please select gender.";
+
+return;
+
 }
 
 
-.app {
-    max-width: 400px;
-    margin: auto;
+
+if(isNaN(hb) || isNaN(mcv)){
+
+document.getElementById("result").innerHTML =
+"Please enter Hb and MCV.";
+
+return;
+
 }
 
 
-.header {
-    text-align: center;
-    margin-bottom: 20px;
+
+let anemia = false;
+
+let severity = "";
+
+
+
+// Male
+
+if(gender.value === "male"){
+
+
+if(hb < 13){
+
+anemia = true;
+
+
+if(hb >= 11){
+
+severity = "Mild anemia";
+
+}
+
+else if(hb >= 8){
+
+severity = "Moderate anemia";
+
+}
+
+else{
+
+severity = "Severe anemia";
+
 }
 
 
-.header h1 {
-    color: #1565c0;
-    font-size: 32px;
-    margin-bottom: 5px;
 }
 
 
-.header p {
-    color: #666;
 }
 
 
-.card,
-.result-card {
-    background: white;
-    padding: 25px;
-    border-radius: 22px;
-    margin-bottom: 20px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+
+// Female
+
+else{
+
+
+if(hb < 12){
+
+anemia = true;
+
+
+if(hb >= 11){
+
+severity = "Mild anemia";
+
+}
+
+else if(hb >= 8){
+
+severity = "Moderate anemia";
+
+}
+
+else{
+
+severity = "Severe anemia";
+
 }
 
 
-h2 {
-    color: #333;
-    text-align: center;
 }
 
 
-label {
-    display: block;
-    margin-top: 15px;
-    font-weight: bold;
 }
 
 
-.gender {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
+
+let pattern="";
+
+
+if(mcv < 80){
+
+pattern="Microcytic pattern";
+
+}
+
+else if(mcv <=100){
+
+pattern="Normocytic pattern";
+
+}
+
+else{
+
+pattern="Macrocytic pattern";
+
 }
 
 
-.gender label {
-    font-weight: normal;
+
+
+
+if(anemia){
+
+
+currentResult =
+"Anemia: YES<br>"+
+"Severity: "+severity+"<br>"+
+"Pattern: "+pattern;
+
+
+}
+
+else{
+
+
+currentResult =
+"Anemia: NO<br>"+
+"Pattern: "+pattern;
+
+
 }
 
 
-input[type="number"] {
-    width: 90%;
-    padding: 13px;
-    margin-top: 8px;
-    border-radius: 12px;
-    border: 1px solid #ccc;
-    font-size: 16px;
+
+document.getElementById("result").innerHTML =
+currentResult;
+
+
+
+});
+
+
+
+
+
+document.getElementById("saveBtn").addEventListener("click", function(){
+
+
+if(currentResult===""){
+
+alert("Analyze patient first.");
+
+return;
+
 }
 
 
-button {
-    width: 100%;
-    padding: 14px;
-    margin-top: 20px;
-    border: none;
-    border-radius: 15px;
-    background: #1565c0;
-    color: white;
-    font-size: 17px;
-}
+
+let patients =
+JSON.parse(localStorage.getItem("patients")) || [];
 
 
-button.save {
-    background: #26a69a;
-}
+
+let patient = {
 
 
-.result-card {
-    background: #e8f4ff;
-}
+id: patients.length + 1,
+
+hb: document.getElementById("hb").value,
+
+mcv: document.getElementById("mcv").value,
+
+result: currentResult.replaceAll("<br>"," "),
+
+date: new Date().toLocaleDateString()
 
 
-#result {
-    text-align: center;
-    font-size: 18px;
-    line-height: 1.8;
-}
+};
+
+
+
+patients.push(patient);
+
+
+localStorage.setItem(
+"patients",
+JSON.stringify(patients)
+);
+
+
+
+alert("Patient saved successfully!");
+
+
+
+});
