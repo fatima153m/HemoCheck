@@ -1,125 +1,104 @@
-document.querySelector("button").addEventListener("click", function () {
-
-    let hb = parseFloat(document.getElementById("hb").value);
-    let mcv = parseFloat(document.getElementById("mcv").value);
-
-    let gender = document.querySelector('input[name="gender"]:checked');
-
-    if (!gender) {
-        document.getElementById("result").innerHTML = "Please select gender.";
-        return;
-    }
-
-    if (isNaN(hb) || isNaN(mcv)) {
-        document.getElementById("result").innerHTML = "Please enter Hb and MCV.";
-        return;
-    }
-
-    let anemia = false;
-    let severity = "";
-
-    // Male
-    if (gender.value === "male") {
-
-        if (hb < 13) {
-            anemia = true;
-
-            if (hb >= 11) {
-                severity = "Mild anemia";
-            } else if (hb >= 8) {
-                severity = "Moderate anemia";
-            } else {
-                severity = "Severe anemia";
-            }
-        }
-
-    }
-
-    // Female
-    else {
-
-        if (hb < 12) {
-            anemia = true;
-
-            if (hb >= 11) {
-                severity = "Mild anemia";
-            } else if (hb >= 8) {
-                severity = "Moderate anemia";
-            } else {
-                severity = "Severe anemia";
-            }
-        }
-
-    }
+body {
+    font-family: Arial, sans-serif;
+    background: #f1f7fc;
+    margin: 0;
+    padding: 20px;
+}
 
 
-    let type = "";
-
-    if (mcv < 80) {
-        type = "Microcytic pattern";
-    } 
-    else if (mcv <= 100) {
-        type = "Normocytic pattern";
-    } 
-    else {
-        type = "Macrocytic pattern";
-    }
+.app {
+    max-width: 400px;
+    margin: auto;
+}
 
 
-    let finalResult = "";
-
-    if (anemia) {
-
-        finalResult =
-        "Anemia: YES<br>" +
-        "Severity: " + severity + "<br>" +
-        "Pattern: " + type;
-
-    } else {
-
-        finalResult =
-        "Anemia: NO";
-
-    }
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+}
 
 
-    document.getElementById("result").innerHTML = finalResult;
+.header h1 {
+    color: #1565c0;
+    font-size: 32px;
+    margin-bottom: 5px;
+}
 
 
-    // Save result temporarily
-    window.currentResult = {
-        gender: gender.value,
-        hb: hb,
-        mcv: mcv,
-        result: finalResult.replace(/<br>/g, " ")
-    };
-
-});
+.header p {
+    color: #666;
+}
 
 
-// Save Patient button
-document.getElementById("saveBtn").addEventListener("click", function () {
+.card,
+.result-card {
+    background: white;
+    padding: 25px;
+    border-radius: 22px;
+    margin-bottom: 20px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+}
 
-    if (!window.currentResult) {
-        alert("Please analyze the patient first.");
-        return;
-    }
 
-    let patients = JSON.parse(localStorage.getItem("patients")) || [];
+h2 {
+    color: #333;
+    text-align: center;
+}
 
-    let patient = {
-        id: patients.length + 1,
-        gender: window.currentResult.gender,
-        hb: window.currentResult.hb,
-        mcv: window.currentResult.mcv,
-        result: window.currentResult.result,
-        date: new Date().toLocaleDateString()
-    };
 
-    patients.push(patient);
+label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+}
 
-    localStorage.setItem("patients", JSON.stringify(patients));
 
-    alert("Patient saved successfully!");
+.gender {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
 
-});
+
+.gender label {
+    font-weight: normal;
+}
+
+
+input[type="number"] {
+    width: 90%;
+    padding: 13px;
+    margin-top: 8px;
+    border-radius: 12px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+
+button {
+    width: 100%;
+    padding: 14px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 15px;
+    background: #1565c0;
+    color: white;
+    font-size: 17px;
+}
+
+
+button.save {
+    background: #26a69a;
+}
+
+
+.result-card {
+    background: #e8f4ff;
+}
+
+
+#result {
+    text-align: center;
+    font-size: 18px;
+    line-height: 1.8;
+}
