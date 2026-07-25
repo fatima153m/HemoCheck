@@ -1,35 +1,148 @@
 body {
+
     font-family: Arial, sans-serif;
-    background-color: #f4f8fb;
-    margin: 40px;
+    background: #f1f7fc;
+    margin: 0;
+    padding: 20px;
+
 }
 
-h1 {
-    color: #1e88e5;
+
+
+.app {
+
+    max-width: 400px;
+    margin: auto;
+
 }
 
-input {
-    padding: 8px;
-    margin-top: 5px;
-    margin-bottom: 15px;
-    width: 220px;
+
+
+.header {
+
+    text-align: center;
+    margin-bottom: 20px;
+
 }
+
+
+
+.header h1 {
+
+    color: #1565c0;
+    font-size: 32px;
+
+}
+
+
+
+.header p {
+
+    color: #666;
+
+}
+
+
+
+.card,
+.result-card {
+
+    background: white;
+    padding: 25px;
+    border-radius: 22px;
+    margin-bottom: 20px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+
+}
+
+
+
+h2 {
+
+    text-align: center;
+    color: #333;
+
+}
+
+
+
+label {
+
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+
+}
+
+
+
+.gender {
+
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+
+}
+
+
+
+.gender label {
+
+    font-weight: normal;
+
+}
+
+
+
+input[type="number"] {
+
+    width: 90%;
+    padding: 13px;
+    margin-top: 8px;
+    border-radius: 12px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+
+}
+
+
 
 button {
-    padding: 10px 20px;
-    background-color: #1e88e5;
-    color: white;
+
+    width: 100%;
+    padding: 14px;
+    margin-top: 20px;
     border: none;
-    border-radius: 5px;
+    border-radius: 15px;
+    background: #1565c0;
+    color: white;
+    font-size: 17px;
     cursor: pointer;
+
 }
 
-button:hover {
-    background-color: #1565c0;
+
+
+button.save {
+
+    background: #26a69a;
+
 }
+
+
+
+.result-card {
+
+    background: #e8f4ff;
+
+}
+
+
 
 #result {
+
+    text-align: center;
     font-size: 18px;
-    font-weight: bold;
-    color: #2e7d32;
+    line-height: 1.8;
+
 }
